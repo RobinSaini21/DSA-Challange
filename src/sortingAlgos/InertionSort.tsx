@@ -1,32 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function SelectionSort() {
+function InsertionSort() {
   const [ele, setEle] = useState<string>("");
   const [elements, setElements] = useState<number[]>([]);
   const [sottedelements, setSortedElements] = useState<number[]>([]);
-  function swap(arr: number[], xp: number, yp: number) {
-    var temp = arr[xp];
-    arr[xp] = arr[yp];
-    arr[yp] = temp;
-  }
 
-  const selectionSort = (arr: number[]) => {
-    let min_idx, i, j, temp;
-    for (i = 0; i < arr.length - 1; i++) {
-      min_idx = i;
-      for (j = i + 1; j < arr.length; j++) {
-        if (arr[j] < arr[min_idx]) {
-          min_idx = j;
-        }
+  const insertionSort = (arr: number[]) => {
+    let i, j, temp, key;
+    for (i = 0; i < arr.length; i++) {
+      key = arr[i];
+      j = i - 1;
+      while (j >= 0 && arr[j] > key) {
+        arr[j+1] = arr[j]
+        j=j-1 
       }
-      swap(arr, min_idx, i);
+      arr[j+1]= key
     }
-    setSortedElements(arr);
+setSortedElements(arr)
   };
 
   const handleSelection = () => {
-    selectionSort(elements);
+    insertionSort(elements);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEle(e.target.value);
@@ -116,4 +111,4 @@ function SelectionSort() {
   );
 }
 
-export default SelectionSort;
+export default InsertionSort;

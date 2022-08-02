@@ -28,9 +28,14 @@ function BubbleSort() {
     setEle(e.target.value);
   };
   const handleClick = () => {
-    const num: number = parseInt(ele);
-    const elements_ = [...elements, num];
-    setElements(elements_);
+    if(ele === ""){
+     alert("Dude How I Can Sort Nothing")
+    } else {
+      const num: number = parseInt(ele);
+      const elements_ = [...elements, num];
+      setElements(elements_);
+    }
+   
     setEle("");
   };
   const arrJSON = JSON.stringify(elements);
